@@ -1,0 +1,360 @@
+/* ============================================================
+   Álibi Express - Folha de Estilo Completa com Fundo Dinâmico
+   ============================================================ */
+
+:root {
+  /* Definição de Cores e Variáveis Globais */
+  --text-main: #ffffff; /* Alterado para branco para contraste com o fundo */
+  --text-muted: #cbd5e1;
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --accent: #ec4899;
+  --success: #10b981;
+  --border-light: rgba(255, 255, 255, 0.2); /* Semi-transparente para glassmorphism */
+  --card-bg: rgba(15, 23, 42, 0.78); /* Fundo do cartão semi-transparente (Glassmorphism) */
+  --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 
+   ESTILO DO BODY (AQUI ESTÁ A IMAGEM DE FUNDO)
+   Certifica-te de que o ficheiro 'fundo.jpg' está na mesma pasta.
+*/
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* CAMADA 1: Gradiente escuro (para garantir legibilidade) */
+  /* CAMADA 2: A tua imagem de fundo */
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
+    url('fundo.jpg');
+  
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* O fundo não mexe ao fazer scroll */
+  
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  line-height: 1.5;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Cabeçalho */
+.app-header {
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3); /* Sombra para destacar o texto no fundo */
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(99, 102, 241, 0.4);
+  border: 1px solid rgba(165, 180, 252, 0.6);
+  color: #e0e7ff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+}
+
+.app-header h1 {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.4rem;
+}
+
+.app-header h1 span {
+  background: linear-gradient(90deg, #a5b4fc, #f9a8d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.app-header p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* Seletor de Categorias */
+.category-selector {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.4rem;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.4rem;
+  border-radius: 14px;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-light);
+}
+.cat-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.65rem 0.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.cat-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.cat-btn.active {
+  background: rgba(255, 255, 255, 0.95);
+  color: #1e1b4b;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Cartão da Desculpa (Aplicado Glassmorphism) */
+.excuse-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(15px); /* Efeito de vidro fosco no cartão */
+  border: 1px solid var(--border-light);
+  border-radius: 24px;
+  padding: 1.75rem;
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 270px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito ao passar o rato no cartão */
+.excuse-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6);
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.3rem 0.75rem;
+  border-radius: 8px;
+}
+
+/* Cores das tags ajustadas para fundo escuro */
+.tag-todas { background: rgba(226, 232, 240, 0.2); color: #e2e8f0; }
+.tag-trabalho { background: rgba(59, 130, 246, 0.3); color: #93c5fd; }
+.tag-relacionamento { background: rgba(219, 39, 119, 0.3); color: #f9a8d4; }
+.tag-social { background: rgba(245, 158, 11, 0.3); color: #fcd34d; }
+.tag-tech { background: rgba(16, 185, 129, 0.3); color: #6ee7b7; }
+
+.credibility-box {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.credibility-box strong {
+  color: #a5b4fc;
+  font-weight: 700;
+}
+
+.excuse-content {
+  padding: 1.75rem 0;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.excuse-text {
+  font-size: clamp(1.1rem, 2.5vw, 1.32rem);
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.55;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.excuse-text.fade-out {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.card-footer {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.excuse-tip {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Botão Copiar */
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 1px solid var(--border-light);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.copy-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.copy-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.copy-btn.copied {
+  background: var(--success);
+  color: #ffffff;
+  border-color: var(--success);
+}
+
+/* Botão Principal */
+.generate-btn {
+  width: 100%;
+  padding: 1.15rem 1.5rem;
+  background: linear-gradient(135deg, #4f46e5 0%, #db2777 100%); /* Cores ajustadas */
+  color: #ffffff;
+  border: none;
+  border-radius: 16px;
+  font-family: inherit;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  box-shadow: 0 10px 25px -5px rgba(219, 39, 119, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.generate-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px -5px rgba(219, 39, 119, 0.7);
+}
+
+.generate-btn:active {
+  transform: translateY(1px);
+}
+
+.generate-btn svg {
+  transition: transform 0.5s ease;
+}
+
+.generate-btn:hover svg {
+  transform: rotate(180deg);
+}
+/* Grupo de Botões de Ação (Copiar + WhatsApp) */
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(37, 211, 102, 0.22);
+  color: #6ee7b7;
+  border: 1px solid rgba(37, 211, 102, 0.45);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.whatsapp-btn:hover:not(:disabled) {
+  background: #25D366;
+  color: #064e3b;
+  border-color: #25D366;
+  transform: translateY(-1px);
+}
+
+.whatsapp-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsividade Mobile */
+@media (max-width: 540px) {
+  .category-selector {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .excuse-card {
+    padding: 1.35rem;
+    min-height: 250px;
+  }
+
+  .card-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .action-buttons { width: 100%; } .copy-btn, .whatsapp-btn { flex: 1; justify-content: center; padding: 0.75rem; }
+    justify-content: center;
+    padding: 0.75rem;
+  }
+}
